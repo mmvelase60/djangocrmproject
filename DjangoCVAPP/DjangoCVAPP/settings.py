@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'cvexcel.apps.MainConfig',
     'cvexcel',
+     'import_export'
 ]
 
 MIDDLEWARE = [
