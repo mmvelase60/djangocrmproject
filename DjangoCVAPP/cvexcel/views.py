@@ -100,3 +100,17 @@ def add_record(request):
         messages.success(request,"You must have to login to add record!") 
         return redirect('home')
     return render(request,'addrecord.html',{'form':form})
+    
+# UPDATE FUNCTION  
+def update_record(request,pk): 
+    if request.user.is_authenticated:
+       current_record= Record.objects.get(id=pk)
+       form=addrecord(request.POST or None ,request.FILES or None,instance=current_record)  
+       if form.is_valid():
+          form.save()
+          messages.success(request,'Record Updated succesfully.....') 
+          return redirect('home') 
+       return render(request,'update.html',{'form':form})
+    else:
+        messages.success(request,'You are  not login! please login to update records') 
+        return redirect('home')
