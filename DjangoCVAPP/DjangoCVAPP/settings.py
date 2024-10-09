@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'cvexcel.apps.MainConfig',
-    'cvexcel',
-     'import_export'
+    'cvexcel', 
+      'import_export'
 ]
 
 MIDDLEWARE = [
