@@ -20,5 +20,5 @@ from cvexcel import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cvexcel/', include('vexcel.urls')),
+    path('cvexcel/', include('cvexcel.urls')),
 ]
