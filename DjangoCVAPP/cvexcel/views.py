@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
 from .models import Record
+from .forms import addrecord
 
 # Create your views here.
 # LOGIN FUNCTION
@@ -84,3 +85,18 @@ def delete_record(request,pk):
     else:
         messages.success(request,"You must have to login to delete record!") 
         return redirect('home')
+
+# ADD RECORD FUNCTION
+def add_record(request):
+    form=addrecord()
+    if request.user.is_authenticated:
+     if request.method=='POST':
+        form=addrecord(request.POST, request.FILES)
+        if form.is_valid():
+          form.save()
+          messages.success(request,'Record added succesfully.....') 
+          return redirect('home')
+    else:
+        messages.success(request,"You must have to login to add record!") 
+        return redirect('home')
+    return render(request,'addrecord.html',{'form':form})
